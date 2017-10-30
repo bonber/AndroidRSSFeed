@@ -75,8 +75,9 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
     public void onBindViewHolder(FeedViewHolder holder, int position) {
 
         holder.txtTitle.setText(rssObject.getItems().get(position).getTitle());
-        holder.txtPubDate.setText(rssObject.getItems().get(position).getPubDate());
+        holder.txtPubDate.setText("Publicado: "+rssObject.getItems().get(position).getPubDate());
         holder.txtContent.setText(rssObject.getItems().get(position).getContent());
+
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
@@ -89,6 +90,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
             }
         });
     }
+
 
     @Override
     public int getItemCount() {

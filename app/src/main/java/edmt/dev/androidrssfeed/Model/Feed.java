@@ -1,5 +1,7 @@
 package edmt.dev.androidrssfeed.Model;
 
+import android.text.Html;
+
 /**
  * Created by reale on 5/5/2017.
  */

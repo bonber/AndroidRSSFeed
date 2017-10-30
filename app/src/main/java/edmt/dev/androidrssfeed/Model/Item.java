@@ -1,5 +1,8 @@
 package edmt.dev.androidrssfeed.Model;
 
+import android.text.Html;
+import android.text.Spanned;
+
 import java.util.List;
 
 /**
@@ -81,7 +84,7 @@ public class Item
     }
 
     public String getDescription() {
-        return description;
+        return Html.fromHtml(description, Html.FROM_HTML_MODE_COMPACT).toString();
     }
 
     public void setDescription(String description) {
@@ -89,7 +92,7 @@ public class Item
     }
 
     public String getContent() {
-        return content;
+        return Html.fromHtml(content, Html.FROM_HTML_MODE_COMPACT).toString();
     }
 
     public void setContent(String content) {

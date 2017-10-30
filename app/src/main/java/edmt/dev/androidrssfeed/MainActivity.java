@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     RSSObject rssObject;
 
     //RSS link
-    private final String RSS_link="http://rss.nytimes.com/services/xml/rss/nyt/Science.xml";
+    private final String RSS_link="https://lizarrakogaztetxea.wordpress.com/feed/";
     private final String RSS_to_Json_API = "https://api.rss2json.com/v1/api.json?rss_url=";
 
     @Override
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         toolbar = (Toolbar)findViewById(R.id.toolbar);
-        toolbar.setTitle("News");
+        toolbar.setTitle("Lizarrako Gazte Asamblada");
         setSupportActionBar(toolbar);
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             protected void onPreExecute() {
-                mDialog.setMessage("Please wait...");
+                mDialog.setMessage("Porfavor espere...");
                 mDialog.show();
             }
 
