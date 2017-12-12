@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ class FeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
     public TextView txtTitle,txtPubDate,txtContent;
     public ImageView imgThumbnail;
     private ItemClickListener itemClickListener;
+    private ImageButton imgCompartir;
 
     public FeedViewHolder(View itemView) {
         super(itemView);
@@ -34,10 +36,12 @@ class FeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
         txtPubDate = (TextView)itemView.findViewById(R.id.txtPubDate);
         txtContent = (TextView)itemView.findViewById(R.id.txtContent);
         imgThumbnail = (ImageView)itemView.findViewById(R.id.imgThumbnail);
+        imgCompartir = (ImageButton)itemView.findViewById(R.id.imgCompartir);
 
         //Set Event
         itemView.setOnClickListener(this);
         itemView.setOnLongClickListener(this);
+
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener) {
@@ -66,6 +70,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
     private RSSObject rssObject;
     private Context mContext;
     private LayoutInflater inflater;
+    private ImageButton imgCompartir;
+
 
     public FeedAdapter(RSSObject rssObject, Context mContext) {
         this.rssObject = rssObject;
@@ -79,7 +85,6 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
         return new FeedViewHolder(itemView);
     }
 
-
     @Override
     public void onBindViewHolder(FeedViewHolder holder, int position) {
 
@@ -87,15 +92,21 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
         holder.txtPubDate.setText("Publicado: "+rssObject.getItems().get(position).getPubDate());
         //holder.txtContent.setText(rssObject.getItems().get(position).getContent());
         holder.txtContent.setText(rssObject.getItems().get(position).getDescription());
-        Picasso.with(mContext).load(rssObject.getItems().get(position).getThumbnail()).into(holder.imgThumbnail);
 
+        Picasso.with(mContext).load(rssObject.getItems().get(position).getThumbnail()).into(holder.imgThumbnail);
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
                 if(!isLongClick)
                 {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(rssObject.getItems().get(position).getLink()));
-                    mContext.startActivity(browserIntent);
+                    //Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(rssObject.getItems().get(position).getLink()));
+                    //mContext.startActivity(browserIntent);
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, rssObject.getItems().get(position).getTitle()
+                            +"\n"
+                            +rssObject.getItems().get(position).getLink());
+                    mContext.startActivity(intent);
                 }
             }
         });
@@ -105,4 +116,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
     public int getItemCount() {
         return rssObject.items.size();
     }
+
+
+
 }
+

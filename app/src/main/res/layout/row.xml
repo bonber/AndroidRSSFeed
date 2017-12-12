@@ -31,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
         <TextView
             android:text="Content"
             android:id="@+id/txtContent"
@@ -40,12 +39,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <ImageButton
+            android:id="@+id/imgCompartir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="?attr/actionModeShareDrawable" />
+
         <ImageView
             android:id="@+id/imgThumbnail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
 
 
 

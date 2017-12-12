@@ -84,6 +84,9 @@ public class Item
     }
 
     public String getDescription() {
+        String corte = "more-link";
+        String cortes[] = description.split(corte);
+        description = cortes[0];
         return Html.fromHtml(description, Html.FROM_HTML_MODE_COMPACT).toString();
     }
 
