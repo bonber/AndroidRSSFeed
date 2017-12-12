@@ -3,14 +3,21 @@ package edmt.dev.androidrssfeed.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+
+import java.io.InputStream;
 
 import edmt.dev.androidrssfeed.Interface.ItemClickListener;
 import edmt.dev.androidrssfeed.Model.LoadImageTask;
@@ -95,9 +102,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> implements
         holder.txtTitle.setText(rssObject.getItems().get(position).getTitle());
         holder.txtPubDate.setText("Publicado: "+rssObject.getItems().get(position).getPubDate());
         holder.txtContent.setText(rssObject.getItems().get(position).getContent());
-        new LoadImageTask(this).execute(rssObject.getItems().get(position).getThumbnail());
-        //holder.imgThumbnail.setImageBitmap(rssObject.getItems().get(position).getThumbnail());
-
+        Picasso.with(mContext).load(rssObject.getItems().get(position).getThumbnail()).into(holder.imgThumbnail);
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
