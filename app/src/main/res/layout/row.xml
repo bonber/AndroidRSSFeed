@@ -43,8 +43,7 @@
         <ImageView
             android:id="@+id/imgThumbnail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_launcher_okupa" />
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

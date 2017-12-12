@@ -1,6 +1,7 @@
 package edmt.dev.androidrssfeed.Model;
 
 import android.graphics.Bitmap;
+import android.text.Html;
 
 import java.util.List;
 
@@ -75,13 +76,7 @@ public class Item
     }
 
     public String getThumbnail() {
-        //var imageBitmap = GetImageBitmapFromUrl(thumbnail);
         return thumbnail;
-    }
-
-    private void GetImageBitmapFromUrl(String url)
-    {
-        //new LoadImageTask(this).execute(url);
     }
 
     public void setThumbnail(String thumbnail) {
@@ -89,7 +84,7 @@ public class Item
     }
 
     public String getDescription() {
-        return description;
+        return Html.fromHtml(description, Html.FROM_HTML_MODE_COMPACT).toString();
     }
 
     public void setDescription(String description) {
@@ -97,9 +92,9 @@ public class Item
     }
 
     public String getContent() {
-        return content;
-        //return Html.fromHtml(content, Html.FROM_HTML_MODE_COMPACT).toString();
-    }
+        //return content;
+        return Html.fromHtml(content, Html.FROM_HTML_MODE_COMPACT).toString();
+   }
 
     public void setContent(String content) {
         this.content = content;
