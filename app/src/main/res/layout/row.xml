@@ -3,52 +3,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:padding="0dp"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
     >
 
     <LinearLayout
-        android:layout_margin="8dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
 
         <TextView
-            android:text="Title"
             android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold" />
 
         <TextView
-            android:text="2017-04-04 12:30:00"
             android:id="@+id/txtPubDate"
-            android:textSize="12sp"
-            android:textStyle="italic"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="2017-04-04 12:30:00"
+            android:textSize="12sp"
+            android:textStyle="italic" />
 
         <TextView
-            android:text="Content"
             android:id="@+id/txtContent"
-            android:textSize="14sp"
-            android:textStyle="normal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Content"
+            android:textSize="14sp"
+            android:textStyle="normal" />
 
         <ImageButton
             android:id="@+id/imgCompartir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="?attr/actionModeShareDrawable" />
+            app:srcCompat="@drawable/ic_compartir" />
+
+        <ImageButton
+            android:id="@+id/imgWeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_web" />
 
         <ImageView
             android:id="@+id/imgThumbnail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_launcher_okupa" />
 
     </LinearLayout>
 

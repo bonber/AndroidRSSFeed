@@ -2,6 +2,7 @@ package edmt.dev.androidrssfeed.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,7 +28,8 @@ class FeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
     public TextView txtTitle,txtPubDate,txtContent;
     public ImageView imgThumbnail;
     private ItemClickListener itemClickListener;
-    private ImageButton imgCompartir;
+    public ImageButton imgCompartir;
+    public ImageButton imgWeb;
 
     public FeedViewHolder(View itemView) {
         super(itemView);
@@ -37,6 +39,7 @@ class FeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
         txtContent = (TextView)itemView.findViewById(R.id.txtContent);
         imgThumbnail = (ImageView)itemView.findViewById(R.id.imgThumbnail);
         imgCompartir = (ImageButton)itemView.findViewById(R.id.imgCompartir);
+        imgWeb = (ImageButton)itemView.findViewById(R.id.imgWeb);
 
         //Set Event
         itemView.setOnClickListener(this);
@@ -71,6 +74,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
     private Context mContext;
     private LayoutInflater inflater;
     private ImageButton imgCompartir;
+    private ImageButton imgWeb;
 
 
     public FeedAdapter(RSSObject rssObject, Context mContext) {
@@ -92,8 +96,11 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
         holder.txtPubDate.setText("Publicado: "+rssObject.getItems().get(position).getPubDate());
         //holder.txtContent.setText(rssObject.getItems().get(position).getContent());
         holder.txtContent.setText(rssObject.getItems().get(position).getDescription());
-
-        Picasso.with(mContext).load(rssObject.getItems().get(position).getThumbnail()).into(holder.imgThumbnail);
+        holder.imgCompartir.setImageResource(R.drawable.ic_compartir);
+        holder.imgCompartir.setImageResource(R.drawable.ic_web);
+        if (!rssObject.getItems().get(position).getThumbnail().equals("")) {
+            Picasso.with(mContext).load(rssObject.getItems().get(position).getThumbnail()).into(holder.imgThumbnail);
+        }
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
